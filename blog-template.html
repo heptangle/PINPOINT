@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+  ════════════════════════════════════════════
+  PINPOINT — BLOG POST TEMPLATE
+  ════════════════════════════════════════════
+  INSTRUCTIONS FOR CREATING A NEW POST:
+
+  1. Copy this entire file and rename it
+     (e.g. "news-2025-01-my-post-title.html")
+
+  2. Update the <title> and <meta> tags above
+
+  3. Edit the METADATA section below:
+     - Category tag
+     - Publication date
+     - Estimated read time
+     - Title
+     - Author name & initials
+
+  4. Swap the featured image:
+     - Add image to the /images/ folder
+     - Replace the placeholder div with:
+       <img src="images/your-photo.jpg" alt="Description">
+
+  5. Write your content inside <div class="blog-content">
+     Available elements:
+     - <p>     paragraph
+     - <h2>    section heading
+     - <h3>    sub-heading
+     - <blockquote>  pull quote
+     - <a href="">   link
+
+  6. Update the "Author" card at the bottom
+
+  7. Update the three "Related posts" cards
+
+  8. Add this post to the news grid on index.html
+  ════════════════════════════════════════════
+  -->
+  <title><!-- POST TITLE --> — PINPOINT</title>
+  <meta name="description" content="<!-- POST EXCERPT / SHORT DESCRIPTION -->">
+  <link rel="stylesheet" href="pinpoint.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ════════ POST HEADER ═════════════════════ -->
+<header class="blog-hero">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div style="margin-bottom:24px; font-size:10px; font-weight:300; letter-spacing:0.12em; color:var(--ink-light);">
+      <a href="index.html" style="transition:color .2s;" onmouseover="this.style.color='var(--pin)'" onmouseout="this.style.color=''">Home</a>
+      <span style="margin: 0 8px;">·</span>
+      <a href="index.html#news" style="transition:color .2s;" onmouseover="this.style.color='var(--pin)'" onmouseout="this.style.color=''">News</a>
+      <span style="margin: 0 8px;">·</span>
+      <span><!-- POST TITLE SHORT --></span>
+    </div>
+
+    <!-- ─── METADATA — EDIT THIS BLOCK ─────────── -->
+    <div class="blog-hero-meta">
+      <span class="blog-tag">Research Update</span>
+      <!-- Change category to one of:
+           Research Update | Conference | Data | Working Paper | Event | News -->
+      <span class="blog-date">January 2025</span>
+      <!-- Date format: Month YYYY or DD Month YYYY -->
+      <span class="blog-read-time">8 min read</span>
+    </div>
+
+    <h1 class="blog-title-large">
+      <!-- ─ POST TITLE — EDIT HERE ──────────────── -->
+      How Production Networks Shape Political Coalitions Over Trade Policy
+    </h1>
+
+    <div class="blog-author-row">
+      <div class="author-avatar">
+        <!-- Change initials to match author -->
+        TB
+      </div>
+      <div>
+        <div class="author-name">Prof. Dr. Timm Betz</div>
+        <!-- Full name of the author -->
+        <div class="author-affil">Principal Investigator, PINPOINT · LMU Munich</div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ════════ FEATURED IMAGE ══════════════════ -->
+<div class="container">
+  <div class="blog-featured-image">
+    <!-- 
+    OPTION A — placeholder (default):
+    Leave the div below as-is
+    
+    OPTION B — real photo:
+    Replace the inner div with:
+    <img src="images/your-image.jpg" alt="Description of image">
+    Recommended size: 1600 × 700 px
+    -->
+    <div class="blog-featured-image-placeholder">
+      <svg width="120" height="90" viewBox="0 0 120 90" fill="none" opacity="0.2">
+        <circle cx="30" cy="45" r="6" fill="#C23B3B"/>
+        <circle cx="70" cy="20" r="4" fill="#888"/>
+        <circle cx="95" cy="60" r="4" fill="#888"/>
+        <circle cx="50" cy="72" r="3.5" fill="#888"/>
+        <circle cx="100" cy="30" r="3" fill="#888"/>
+        <line x1="30" y1="45" x2="70" y2="20" stroke="#C23B3B" stroke-width="1.5"/>
+        <line x1="30" y1="45" x2="95" y2="60" stroke="#C23B3B" stroke-width="1.5"/>
+        <line x1="30" y1="45" x2="50" y2="72" stroke="#C23B3B" stroke-width="1.5"/>
+        <line x1="70" y1="20" x2="100" y2="30" stroke="#bbb" stroke-width="1"/>
+        <line x1="95" y1="60" x2="50" y2="72" stroke="#bbb" stroke-width="1"/>
+        <line x1="70" y1="20" x2="95" y2="60" stroke="#bbb" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════ ARTICLE BODY ════════════════════ -->
+<div class="container" style="padding-bottom: clamp(64px,10vw,120px);">
+  <div class="blog-layout">
+
+    <!-- Main content -->
+    <article class="blog-content">
+
+      <!--
+      ════════════════════════════════════
+      WRITE YOUR POST CONTENT BELOW
+      Available HTML elements:
+        <p>          paragraph
+        <h2>         section heading (also added to TOC)
+        <h3>         sub-heading
+        <blockquote> pull quote
+        <a href="…"> inline link
+      ════════════════════════════════════
+      -->
+
+      <p>
+        A fundamental puzzle in the political economy of trade concerns how
+        political coalitions form around trade policy. Standard models predict
+        that only large, globally engaged firms will organize politically —
+        leaving most domestic firms on the sidelines. But this misses a crucial
+        feature of modern economies: the dense web of supplier–customer
+        relationships that tie firms together in domestic production networks.
+      </p>
+
+      <p>
+        In a new working paper, we develop a theoretical model showing how
+        production network ties fundamentally alter the political incentives of
+        domestic firms. A firm embedded as a supplier to an export-oriented
+        hub has strong indirect incentives to support trade liberalisation —
+        even if it never directly exports a single unit.
+      </p>
+
+      <h2>The Production Network Mechanism</h2>
+
+      <p>
+        The core insight is straightforward: when a firm sells intermediate
+        goods to a downstream exporter, its fortunes are tied to that
+        exporter's competitiveness in international markets. A tariff hike
+        that harms the exporter ripples upstream, reducing demand for the
+        supplier's output. The supplier is exposed to international markets
+        not through its own trade but through its network position.
+      </p>
+
+      <blockquote>
+        Ignoring production network ties risks systematically misattributing
+        who benefits from — and who bears the costs of — economic globalisation.
+      </blockquote>
+
+      <p>
+        This mechanism has significant implications for our understanding of
+        political coalitions. Rather than a fragmented landscape of individual
+        firm interests, production networks can aggregate preferences across
+        many firms — creating the basis for broad coalitions that cut across
+        sectors.
+      </p>
+
+      <h2>Empirical Evidence</h2>
+
+      <p>
+        We test these predictions using a new cross-country dataset linking
+        firm-level trade data to domestic input–output relationships. The
+        dataset covers 18 countries over a 20-year period, and captures
+        both the quantity and quality of production ties between firms in
+        different sectors.
+      </p>
+
+      <p>
+        Our findings provide strong support for the network mechanism. Firms
+        with greater upstream exposure to globally engaged customers are
+        significantly more likely to engage in political activity favouring
+        trade liberalisation — even after controlling for their own trade
+        exposure, size, and sector.
+      </p>
+
+      <h3>Coalition Formation</h3>
+
+      <p>
+        Beyond individual firm behaviour, we show that denser production
+        network ties between sectors correlate with the formation of
+        cross-sectoral trade coalitions. Sectors that are tightly integrated
+        through buyer–supplier relationships are more likely to coordinate
+        their lobbying efforts — and to do so across traditional sector
+        boundaries.
+      </p>
+
+      <h2>Implications</h2>
+
+      <p>
+        These findings have important implications for how we think about the
+        political economy of globalisation. Standard accounts focus on the
+        direct winners and losers from trade. Our framework reveals a much
+        larger set of firms and workers who are indirectly affected through
+        production network ties — and who, under the right conditions, can be
+        mobilised into politically relevant coalitions.
+      </p>
+
+      <p>
+        The paper is currently under review. A preprint will be posted to
+        SSRN in early 2025. We welcome feedback from scholars working on
+        related questions.
+      </p>
+
+    </article>
+
+    <!-- Sidebar (TOC + meta) -->
+    <aside class="blog-sidebar">
+
+      <div class="blog-sidebar-section">
+        <div class="blog-sidebar-title">In this post</div>
+        <ul class="blog-toc-list">
+          <li class="blog-toc-item"><a href="#">The Production Network Mechanism</a></li>
+          <li class="blog-toc-item"><a href="#">Empirical Evidence</a></li>
+          <li class="blog-toc-item"><a href="#">Coalition Formation</a></li>
+          <li class="blog-toc-item"><a href="#">Implications</a></li>
+        </ul>
+      </div>
+
+      <div class="blog-sidebar-section">
+        <div class="blog-sidebar-title">Details</div>
+        <div style="font-size:11px;font-weight:300;color:var(--ink-mid);line-height:2;">
+          <div><span style="color:var(--ink-light);">Date</span><br>January 2025</div>
+          <div style="margin-top:10px;"><span style="color:var(--ink-light);">Category</span><br>Research Update</div>
+          <div style="margin-top:10px;"><span style="color:var(--ink-light);">Authors</span><br>Timm Betz,<br>Sören Etzerodt</div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Author bio card -->
+  <div class="blog-author-card">
+    <div class="blog-author-avatar-lg">TB</div>
+    <div class="blog-author-info">
+      <div class="blog-author-name-lg">Prof. Dr. Timm Betz</div>
+      <div class="blog-author-role-lg">Principal Investigator</div>
+      <p class="blog-author-bio-lg">
+        Timm Betz holds the Chair of Comparative Politics and International
+        Political Economy at Ludwig-Maximilians-Universität München.
+        His research focuses on the political economy of trade, investment,
+        and international institutions, with a particular interest in how
+        firm-level economic relationships shape political outcomes.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════ RELATED POSTS ═══════════════════ -->
+<section class="section-sm" style="background: var(--off-white);">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(24px,4vw,48px);">
+      <span class="deco-pin" data-size="12"></span>
+      <span class="label">More from the project</span>
+    </div>
+    <div class="related-posts-grid">
+
+      <article class="news-card">
+        <a href="blog-template.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.25">
+                <circle cx="10" cy="20" r="3" fill="#C23B3B"/>
+                <circle cx="28" cy="10" r="2.5" fill="#888"/>
+                <circle cx="32" cy="30" r="2.5" fill="#888"/>
+                <line x1="10" y1="20" x2="28" y2="10" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="10" y1="20" x2="32" y2="30" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="28" y1="10" x2="32" y2="30" stroke="#bbb" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Conference</div>
+          <h3 class="news-card-title">APSA Annual Meeting — Presentation Recap</h3>
+          <div class="news-card-meta">
+            <span>Sept. 2024</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-card">
+        <a href="blog-template.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.25">
+                <circle cx="20" cy="10" r="3" fill="#888"/>
+                <circle cx="8" cy="32" r="2.5" fill="#888"/>
+                <circle cx="32" cy="32" r="2.5" fill="#888"/>
+                <line x1="20" y1="10" x2="8" y2="32" stroke="#bbb" stroke-width="0.8"/>
+                <line x1="20" y1="10" x2="32" y2="32" stroke="#bbb" stroke-width="0.8"/>
+                <line x1="8" y1="32" x2="32" y2="32" stroke="#bbb" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Data</div>
+          <h3 class="news-card-title">New Dataset on Firm-Level Production Ties Released</h3>
+          <div class="news-card-meta">
+            <span>June 2024</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-card">
+        <a href="blog-template.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.25">
+                <circle cx="14" cy="14" r="3" fill="#C23B3B"/>
+                <circle cx="30" cy="22" r="2.5" fill="#888"/>
+                <circle cx="20" cy="34" r="2.5" fill="#888"/>
+                <line x1="14" y1="14" x2="30" y2="22" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="30" y1="22" x2="20" y2="34" stroke="#bbb" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Working Paper</div>
+          <h3 class="news-card-title">Institutions and the Architecture of Production Networks</h3>
+          <div class="news-card-meta">
+            <span>March 2024</span>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">Politics, Institutions, and Production Networks. ERC Starting Grant 101041658.</p>
+        <div class="footer-erc"><div class="footer-erc-dot"></div>European Research Council</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-col-links">
+          <li><a href="research.html" class="footer-col-link">Working Papers</a></li>
+          <li><a href="research.html" class="footer-col-link">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-col-links">
+          <li><a href="https://cordis.europa.eu/project/id/101041658" target="_blank" class="footer-col-link">CORDIS</a></li>
+          <li><a href="contact.html" class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+</body>
+</html>

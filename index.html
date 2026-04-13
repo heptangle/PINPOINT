@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PINPOINT — Politics, Institutions, and Production Networks</title>
+  <meta name="description" content="ERC-funded research project developing an innovative framework built on the linkages between firms created by domestic production networks.">
+  <link rel="stylesheet" href="pinpoint.css">
+  <style>
+    /* Page-specific overrides */
+    .hero-content { padding-bottom: clamp(80px, 12vw, 160px); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="network-canvas"></canvas>
+
+  <div class="container hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="label">ERC Starting Grant · 2022–2027</span>
+    </div>
+
+    <h1 class="hero-title">PIN<span>·</span><br>POINT</h1>
+
+    <p class="hero-subtitle">
+      Politics, Institutions, and<br>Production Networks
+    </p>
+    <p class="hero-subtext">
+      Revising our understanding of the political underpinnings<br>of economic globalisation
+    </p>
+
+    <a href="about.html" class="hero-cta">
+      Discover the project
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+        <path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero-meta">
+    <div class="hero-meta-badge">
+      <div class="erc-dot"></div>
+      European Research Council
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHAT IS PINPOINT
+════════════════════════════════════════════ -->
+<section class="section" style="background: var(--white);">
+  <div class="container">
+    <div class="intro-grid">
+
+      <!-- Left: text -->
+      <div class="intro-left fade-up">
+        <div class="intro-label-row">
+          <span class="deco-pin" data-size="14"></span>
+          <span class="label">What is PINPOINT?</span>
+        </div>
+
+        <h2 class="intro-title">
+          The politics of<br>production networks
+        </h2>
+
+        <p class="intro-text">
+          What are the political sources and consequences of economic globalization,
+          and how do political institutions shape globalization?
+        </p>
+        <p class="intro-text">
+          Current frameworks emphasize a <em>fragmentation of politics</em>: conflict
+          breaks down to individual firms and citizens, because the gains from trade
+          concentrate on large, globally engaged actors. PINPOINT departs from this view.
+        </p>
+        <p class="intro-text">
+          By placing economic exchange between firms at the center, PINPOINT
+          provides theoretical and empirical innovations that lead to a revised
+          understanding of the political underpinnings of economic globalization —
+          and of the mechanisms through which institutions shape it.
+        </p>
+
+        <a href="research.html" class="hero-cta" style="margin-top: 32px; display: inline-flex;">
+          Explore the research
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+            <path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: pillars -->
+      <div class="intro-right fade-up" style="transition-delay:0.15s">
+        <ul class="pillars-list">
+          <li class="pillar-item">
+            <span class="pillar-number">01</span>
+            <div class="pillar-content">
+              <h3 class="pillar-title">Production Networks</h3>
+              <p class="pillar-text">
+                Domestic firms interact with international markets indirectly —
+                as suppliers and customers of globally engaged firms.
+                These linkages vary in quantity and quality, and are largely
+                ignored in existing frameworks.
+              </p>
+            </div>
+          </li>
+          <li class="pillar-item">
+            <span class="pillar-number">02</span>
+            <div class="pillar-content">
+              <h3 class="pillar-title">Political Institutions</h3>
+              <p class="pillar-text">
+                PINPOINT investigates how political institutions shape — and are
+                shaped by — the structure of economic exchange, political coalitions,
+                and citizen preferences in the context of global markets.
+              </p>
+            </div>
+          </li>
+          <li class="pillar-item">
+            <span class="pillar-number">03</span>
+            <div class="pillar-content">
+              <h3 class="pillar-title">Economic Globalisation</h3>
+              <p class="pillar-text">
+                The project delineates the behavior of governments, firms, and
+                citizens in the context of international markets, challenging
+                prevailing theories of trade politics.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     KEY FACTS BAND
+════════════════════════════════════════════ -->
+<div class="facts-band">
+  <div class="container">
+    <div class="facts-grid">
+      <div class="fact-item accent">
+        <div class="fact-value">€1.48M</div>
+        <div class="fact-label">ERC Grant</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-value">2022</div>
+        <div class="fact-label">Project Start</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-value">2027</div>
+        <div class="fact-label">Project End</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-value">LMU</div>
+        <div class="fact-label">Munich</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     LATEST NEWS
+════════════════════════════════════════════ -->
+<section class="section" style="background: var(--off-white);">
+  <div class="container">
+
+    <div class="news-header fade-up">
+      <div>
+        <span class="label" style="display:block; margin-bottom: 8px;">From the project</span>
+        <h2 class="display-md">Latest</h2>
+      </div>
+      <a href="blog-template.html" class="news-header-right">All posts →</a>
+    </div>
+
+    <div class="news-grid fade-up" style="transition-delay:0.1s">
+
+      <!-- Featured post -->
+      <article class="news-card">
+        <a href="blog-post.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <!-- Decorative network SVG placeholder -->
+              <svg width="80" height="60" viewBox="0 0 80 60" fill="none" opacity="0.3">
+                <circle cx="20" cy="30" r="4" fill="#C23B3B"/>
+                <circle cx="50" cy="15" r="3" fill="#888"/>
+                <circle cx="65" cy="40" r="3" fill="#888"/>
+                <circle cx="35" cy="48" r="2.5" fill="#888"/>
+                <line x1="20" y1="30" x2="50" y2="15" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="20" y1="30" x2="65" y2="40" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="20" y1="30" x2="35" y2="48" stroke="#C23B3B" stroke-width="1"/>
+                <line x1="50" y1="15" x2="65" y2="40" stroke="#999" stroke-width="0.7"/>
+                <line x1="65" y1="40" x2="35" y2="48" stroke="#999" stroke-width="0.7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Research Update</div>
+          <h3 class="news-card-title">
+            How Production Networks Shape Political Coalitions Over Trade Policy
+          </h3>
+          <p class="news-card-excerpt">
+            A new working paper from PINPOINT examines how the structure of
+            domestic production networks — the web of supplier-customer relationships
+            between firms — conditions the formation of political coalitions in trade
+            disputes. The findings challenge long-standing assumptions about the
+            fragmentation of trade politics.
+          </p>
+          <div class="news-card-meta">
+            <span>Timm Betz</span>
+            <div class="news-card-meta-dot"></div>
+            <span>January 2025</span>
+            <div class="news-card-meta-dot"></div>
+            <span>8 min read</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Small post 2 -->
+      <article class="news-card news-card-sm">
+        <a href="blog-post.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <svg width="50" height="50" viewBox="0 0 50 50" fill="none" opacity="0.3">
+                <circle cx="25" cy="10" r="4" fill="#888"/>
+                <circle cx="10" cy="38" r="3" fill="#888"/>
+                <circle cx="40" cy="38" r="3" fill="#888"/>
+                <line x1="25" y1="10" x2="10" y2="38" stroke="#999" stroke-width="0.8"/>
+                <line x1="25" y1="10" x2="40" y2="38" stroke="#999" stroke-width="0.8"/>
+                <line x1="10" y1="38" x2="40" y2="38" stroke="#999" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Conference</div>
+          <h3 class="news-card-title">APSA Annual Meeting — Presentation Recap</h3>
+          <p class="news-card-excerpt">
+            PINPOINT team members presented new theoretical and empirical findings
+            on firm-level political behavior at the American Political Science Association
+            Annual Meeting in Philadelphia.
+          </p>
+          <div class="news-card-meta">
+            <span>Sören Etzerodt</span>
+            <div class="news-card-meta-dot"></div>
+            <span>Sept. 2024</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Small post 3 -->
+      <article class="news-card news-card-sm">
+        <a href="blog-post.html">
+          <div class="news-card-image">
+            <div class="news-card-image-placeholder">
+              <svg width="50" height="50" viewBox="0 0 50 50" fill="none" opacity="0.3">
+                <circle cx="15" cy="15" r="3" fill="#C23B3B"/>
+                <circle cx="35" cy="20" r="2.5" fill="#888"/>
+                <circle cx="25" cy="38" r="3" fill="#888"/>
+                <circle cx="42" cy="38" r="2" fill="#888"/>
+                <line x1="15" y1="15" x2="35" y2="20" stroke="#C23B3B" stroke-width="0.9"/>
+                <line x1="35" y1="20" x2="25" y2="38" stroke="#999" stroke-width="0.8"/>
+                <line x1="35" y1="20" x2="42" y2="38" stroke="#999" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="news-card-tag">Data</div>
+          <h3 class="news-card-title">New Dataset on Firm-Level Production Ties Released</h3>
+          <p class="news-card-excerpt">
+            The PINPOINT team has compiled an original cross-country dataset linking
+            firm-level trade data to domestic input-output relationships, enabling
+            new empirical tests of the production-network theory.
+          </p>
+          <div class="news-card-meta">
+            <span>Jonas Geus</span>
+            <div class="news-card-meta-dot"></div>
+            <span>June 2024</span>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TEAM TEASER
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: clamp(32px,5vw,64px);" class="fade-up">
+      <div>
+        <span class="label" style="display:block; margin-bottom:8px;">The team</span>
+        <h2 class="display-md">Researchers</h2>
+      </div>
+      <a href="portraits.html" class="news-header-right">View all →</a>
+    </div>
+
+    <div style="display:flex; gap: clamp(12px,2vw,32px); flex-wrap:wrap;" class="fade-up" style="transition-delay:0.1s">
+      <!-- Mini team cards -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">TB</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Timm Betz</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--pin);">PI</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">SE</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Sören Etzerodt</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);">Researcher</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">JG</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Jonas Geus</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);">Researcher</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">PB</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Paul Binder</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);">Researcher</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">BA</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Borna Ardehi</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);">Researcher</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; min-width:100px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--ink-light)">MG</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:300;">Monika Grzegorczyk</div>
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);">Researcher</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">
+          Politics, Institutions, and Production Networks.
+          ERC Starting Grant 101041658.
+        </p>
+        <div class="footer-erc">
+          <div class="footer-erc-dot"></div>
+          European Research Council
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-col-links">
+          <li><a href="research.html" class="footer-col-link">Working Papers</a></li>
+          <li><a href="research.html" class="footer-col-link">Publications</a></li>
+          <li><a href="research.html" class="footer-col-link">Data</a></li>
+          <li><a href="research.html" class="footer-col-link">Methods</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-col-links">
+          <li><a href="contact.html" class="footer-col-link">Get in touch</a></li>
+          <li><a href="https://cordis.europa.eu/project/id/101041658" target="_blank" class="footer-col-link">CORDIS record</a></li>
+          <li><a href="https://doi.org/10.3030/101041658" target="_blank" class="footer-col-link">DOI 10.3030/101041658</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+        <a href="#" class="footer-bottom-link">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+</body>
+</html>
