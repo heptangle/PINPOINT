@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portraits — PINPOINT</title>
+  <meta name="description" content="Meet the PINPOINT research team.">
+  <link rel="stylesheet" href="pinpoint.css">
+  <style>
+    /* Extra styles for the portraits board */
+    .portraits-board {
+      background: var(--white);
+      padding: clamp(40px, 6vw, 80px) 0;
+      position: relative;
+    }
+    /* Subtle paper texture lines */
+    .portraits-board::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        rgba(0,0,0,0.012) 1px,
+        transparent 1px
+      );
+      background-size: 100% 32px;
+      pointer-events: none;
+    }
+    .flip-instruction {
+      text-align: center;
+      margin-bottom: clamp(40px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .flip-instruction-icon {
+      width: 20px; height: 20px;
+      border: 1px solid var(--paper);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="divider" style="margin-bottom: clamp(32px, 5vw, 64px);"></div>
+    <div class="page-header-inner">
+      <div>
+        <div class="page-header-label"><span class="label">The team</span></div>
+        <h1 class="page-header-title">Por<span style="color:var(--pin);">·</span><br>traits</h1>
+      </div>
+      <p class="page-header-desc">
+        Six researchers connected by curiosity about the political economy of
+        globalisation. Hover a card to reveal their profile.
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+
+<!-- PORTRAITS BOARD -->
+<section class="portraits-board">
+  <div class="container">
+
+    <div class="flip-instruction">
+      <div class="flip-instruction-icon">↻</div>
+      Hover card to flip
+    </div>
+
+    <!-- The stage with the string SVG canvas -->
+    <div class="portraits-stage" id="portraits-stage">
+      <canvas id="string-canvas"></canvas>
+
+      <!-- ROW 1: PI -->
+      <div class="portraits-pi">
+        <div class="portrait-card pi-card" id="card-timm">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">TB</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role" style="margin-bottom:6px;">Principal Investigator</div>
+                <div class="card-name">Prof. Dr.<br>Timm Betz</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Prof. Dr. Timm Betz</div>
+                <div class="card-back-role">Principal Investigator</div>
+                <p class="card-bio">
+                  Chair of Comparative Politics and International Political Economy
+                  at LMU Munich. His research examines the political economy of
+                  trade, investment, and international institutions.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2: Three members -->
+      <div class="portraits-row">
+
+        <div class="portrait-card member-card" id="card-soren">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">SE</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Postdoctoral Researcher</div>
+                <div class="card-name">Sören<br>Etzerodt</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Sören Etzerodt</div>
+                <div class="card-back-role">Postdoctoral Researcher</div>
+                <p class="card-bio">
+                  Researcher specializing in the comparative political economy
+                  of trade and the role of firm networks in shaping government
+                  behaviour and policy outcomes.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait-card member-card" id="card-jonas">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">JG</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Doctoral Researcher</div>
+                <div class="card-name">Jonas<br>Geus</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Jonas Geus</div>
+                <div class="card-back-role">Doctoral Researcher</div>
+                <p class="card-bio">
+                  PhD candidate examining the relationship between production
+                  network structures and citizen preferences regarding
+                  economic globalisation.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait-card member-card" id="card-paul">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">PB</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Doctoral Researcher</div>
+                <div class="card-name">Paul<br>Binder</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Paul Binder</div>
+                <div class="card-back-role">Doctoral Researcher</div>
+                <p class="card-bio">
+                  PhD candidate researching how political institutions mediate
+                  the influence of production networks on trade policy and
+                  regulatory outcomes.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 3: Two members -->
+      <div class="portraits-row">
+
+        <div class="portrait-card member-card" id="card-borna">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">BA</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Doctoral Researcher</div>
+                <div class="card-name">Borna<br>Ardehi</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Borna Ardehi</div>
+                <div class="card-back-role">Doctoral Researcher</div>
+                <p class="card-bio">
+                  PhD candidate working on the political consequences of
+                  supply-chain exposure and the distributional politics of
+                  economic globalisation.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait-card member-card" id="card-monika">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">MG</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Doctoral Researcher</div>
+                <div class="card-name">Monika<br>Grzegorczyk</div>
+              </div>
+              <div class="flip-hint">hover to reveal →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">Monika Grzegorczyk</div>
+                <div class="card-back-role">Doctoral Researcher</div>
+                <p class="card-bio">
+                  PhD candidate studying how domestic firm networks shape
+                  political coalitions and the micro-level political economy
+                  of trade in Central and Eastern Europe.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /portraits-stage -->
+
+    <!-- Note about photos -->
+    <div style="text-align:center; margin-top: clamp(32px,4vw,56px);">
+      <p style="font-size:10px;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-light);">
+        Replace placeholder images by adding <code style="font-family:monospace;background:var(--off-white);padding:2px 6px;border-radius:2px;">images/name.jpg</code> and updating the src attribute
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">Politics, Institutions, and Production Networks. ERC Starting Grant 101041658.</p>
+        <div class="footer-erc"><div class="footer-erc-dot"></div>European Research Council</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-col-links">
+          <li><a href="research.html" class="footer-col-link">Working Papers</a></li>
+          <li><a href="research.html" class="footer-col-link">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-col-links">
+          <li><a href="contact.html" class="footer-col-link">Get in touch</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+</body>
+</html>

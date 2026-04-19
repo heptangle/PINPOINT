@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — PINPOINT</title>
+  <meta name="description" content="Get in touch with the PINPOINT research team in Munich.">
+  <link rel="stylesheet" href="pinpoint.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="divider" style="margin-bottom: clamp(32px, 5vw, 64px);"></div>
+    <div class="page-header-inner">
+      <div>
+        <div class="page-header-label"><span class="label">Get in touch</span></div>
+        <h1 class="page-header-title">Con<span style="color:var(--pin);">·</span><br>tact</h1>
+      </div>
+      <p class="page-header-desc">
+        For research inquiries, collaboration proposals, or media requests,
+        please use the form below or reach us directly in Munich.
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+
+<!-- CONTACT BODY -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div class="contact-form fade-up">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:36px;">
+          <span class="deco-pin" data-size="13"></span>
+          <span class="label">Send a message</span>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="affiliation">Affiliation</label>
+            <input type="text" id="affiliation" name="affiliation" class="form-input" placeholder="University / institution (optional)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <select id="subject" name="subject" class="form-select form-input">
+              <option value="" disabled selected>Select a topic</option>
+              <option>Research inquiry</option>
+              <option>Collaboration proposal</option>
+              <option>Data request</option>
+              <option>Media / press</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Your message…" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Send message
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+              <path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info fade-up" style="transition-delay:0.15s;">
+
+        <!-- Map placeholder -->
+        <div class="contact-map-placeholder">
+          <div class="map-grid"></div>
+          <div class="map-pin-center">
+            <span class="deco-pin" data-size="28"></span>
+            <div class="map-address-text">
+              Maria-Theresia-Str. 21<br>
+              Munich, Germany
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 36px;">
+          <div class="sidebar-title" style="margin-bottom:12px;">Postal Address</div>
+          <div class="address-block">
+            <strong>PINPOINT Research Project</strong><br>
+            Prof. Dr. Timm Betz<br>
+            Ludwig-Maximilians-Universität München<br>
+            Maria-Theresia-Straße 21<br>
+            81675 Munich<br>
+            Germany
+          </div>
+        </div>
+
+        <div style="margin-bottom: 36px;">
+          <div class="sidebar-title" style="margin-bottom:12px;">External Links</div>
+          <div style="display:flex; flex-direction:column; gap: 8px;">
+            <a href="https://cordis.europa.eu/project/id/101041658" target="_blank"
+               style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:color .2s,border-color .2s;"
+               onmouseover="this.style.color='var(--pin)';this.style.borderColor='var(--pin)'"
+               onmouseout="this.style.color='';this.style.borderColor=''">
+              CORDIS Project Record <span>→</span>
+            </a>
+            <a href="https://doi.org/10.3030/101041658" target="_blank"
+               style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:color .2s,border-color .2s;"
+               onmouseover="this.style.color='var(--pin)';this.style.borderColor='var(--pin)'"
+               onmouseout="this.style.color='';this.style.borderColor=''">
+              DOI 10.3030/101041658 <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-title" style="margin-bottom:12px;">Funded by</div>
+          <div class="erc-badge">
+            <div class="erc-badge-dot"><span>ERC</span></div>
+            <div class="erc-badge-text">
+              <strong>European Research Council</strong>
+              Starting Grant · Horizon Europe<br>
+              Grant Agreement 101041658
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">Politics, Institutions, and Production Networks. ERC Starting Grant 101041658.</p>
+        <div class="footer-erc"><div class="footer-erc-dot"></div>European Research Council</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-col-links">
+          <li><a href="research.html" class="footer-col-link">Working Papers</a></li>
+          <li><a href="research.html" class="footer-col-link">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-col-links">
+          <li><a href="https://cordis.europa.eu/project/id/101041658" target="_blank" class="footer-col-link">CORDIS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+</body>
+</html>
