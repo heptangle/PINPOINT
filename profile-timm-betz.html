@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prof. Dr. Timm Betz — PINPOINT</title>
+  <meta name="description" content="Profile of Prof. Dr. Timm Betz, Principal Investigator of the PINPOINT ERC research project.">
+  <link rel="stylesheet" href="pinpoint.css">
+  <style>
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .profile-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Left column ── */
+    .profile-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--off-white);
+      border: 1px solid var(--paper);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .profile-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .profile-initials-lg {
+      font-family: 'Inter', sans-serif;
+      font-size: 64px;
+      font-weight: 200;
+      color: var(--ink-light);
+      letter-spacing: 0.05em;
+    }
+    .profile-name-block {
+      margin-bottom: 24px;
+    }
+    .profile-name {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .profile-role {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--pin);
+    }
+    .profile-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .profile-ext-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--off-white);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--ink-mid);
+      transition: color 0.2s;
+    }
+    .profile-ext-link:first-child { border-top: 1px solid var(--off-white); }
+    .profile-ext-link:hover { color: var(--pin); }
+    .profile-ext-link svg { opacity: 0.4; transition: opacity 0.2s, transform 0.2s; }
+    .profile-ext-link:hover svg { opacity: 1; transform: translateX(3px); }
+
+    /* ── Right column ── */
+    .profile-content {}
+    .profile-section { margin-bottom: clamp(40px, 6vw, 64px); }
+    .profile-section-label {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--off-white);
+    }
+    .profile-bio-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-mid);
+    }
+    .profile-bio-text p + p { margin-top: 1.2em; }
+
+    /* Research interests tags */
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .tag {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--paper);
+      color: var(--ink-mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: var(--pin); color: var(--pin); }
+
+    /* Publications */
+    .pub-card {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--off-white);
+    }
+    .pub-card:first-child { border-top: 1px solid var(--off-white); }
+    .pub-card-year {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--pin);
+      margin-bottom: 6px;
+    }
+    .pub-card-title {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .pub-card-venue {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 10px;
+    }
+    .pub-card-link {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      border-bottom: 1px solid var(--paper);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pub-card-link:hover { color: var(--pin); border-color: var(--pin); }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      transition: color 0.2s;
+      margin-bottom: clamp(32px, 5vw, 56px);
+    }
+    .back-link:hover { color: var(--pin); }
+    .back-link svg { transition: transform 0.2s; }
+    .back-link:hover svg { transform: translateX(-3px); }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- PROFILE BODY -->
+<section class="section" style="padding-top: calc(var(--nav-h) + clamp(40px,6vw,80px));">
+  <div class="container">
+
+    <!-- Back -->
+    <a href="portraits.html" class="back-link">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <path d="M14 5H2M6 1L2 5l4 4" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      All portraits
+    </a>
+
+    <div class="profile-layout">
+
+      <!-- ── LEFT: photo + links ── -->
+      <div class="profile-photo-wrap fade-up">
+
+        <div class="profile-photo">
+          <!--
+            Replace the div below with:
+            <img src="images/timm-betz.jpg" alt="Prof. Dr. Timm Betz">
+          -->
+          <div class="profile-initials-lg">TB</div>
+        </div>
+
+        <div class="profile-name-block">
+          <div class="profile-name">Prof. Dr. Timm Betz</div>
+          <div class="profile-role">Principal Investigator</div>
+        </div>
+
+        <ul class="profile-links-list">
+          <li>
+            <a href="#" class="profile-ext-link">
+              <span>LMU Research Profile</span>
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="profile-ext-link">
+              <span>Personal Website</span>
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="profile-ext-link">
+              <span>LinkedIn</span>
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="profile-ext-link">
+              <span>Academia.edu</span>
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="profile-ext-link">
+              <span>Google Scholar</span>
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- ── RIGHT: bio + research + publications ── -->
+      <div class="profile-content fade-up" style="transition-delay:0.12s;">
+
+        <!-- Bio -->
+        <div class="profile-section">
+          <div class="profile-section-label">Biography</div>
+          <div class="profile-bio-text">
+            <p>
+              Timm Betz is Professor of Comparative Politics and International Political
+              Economy at Ludwig-Maximilians-Universität München, where he holds the
+              Chair of Comparative Politics. He is the Principal Investigator of the
+              PINPOINT ERC Starting Grant project.
+            </p>
+            <p>
+              His research examines the political economy of trade, investment, and
+              international institutions, with a particular focus on how firm-level
+              economic relationships shape political behaviour, coalition formation, and
+              government policy. A central concern of his work is how the structure of
+              domestic production networks — the web of buyer–supplier relationships
+              between firms — mediates the political consequences of economic globalisation.
+            </p>
+            <p>
+              Before joining LMU Munich, he held positions at Texas A&M University and
+              completed his PhD at the University of Rochester. His work has appeared in
+              journals including the <em>American Journal of Political Science</em>,
+              <em>International Organization</em>, the <em>Journal of Politics</em>,
+              and the <em>Annual Review of Political Science</em>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Research Interests -->
+        <div class="profile-section">
+          <div class="profile-section-label">Research Interests</div>
+          <div class="tags-row">
+            <span class="tag">Political Economy of Trade</span>
+            <span class="tag">Production Networks</span>
+            <span class="tag">International Institutions</span>
+            <span class="tag">Firm Politics</span>
+            <span class="tag">Economic Globalisation</span>
+            <span class="tag">Comparative Politics</span>
+          </div>
+        </div>
+
+        <!-- Recent Publications -->
+        <div class="profile-section">
+          <div class="profile-section-label">Recent Publications</div>
+
+          <div class="pub-card">
+            <div class="pub-card-year">2024</div>
+            <div class="pub-card-title">
+              Firms, Networks, and the Political Economy of Trade
+            </div>
+            <div class="pub-card-venue">Annual Review of Political Science, Vol. 27</div>
+            <a href="#" class="pub-card-link">
+              View publication
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M0 4h8M5 1l3 3-3 3" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </div>
+
+          <div class="pub-card">
+            <div class="pub-card-year">2023</div>
+            <div class="pub-card-title">
+              Political Institutions and the Governance of Production Networks
+            </div>
+            <div class="pub-card-venue">International Organization, Vol. 77, No. 2</div>
+            <a href="#" class="pub-card-link">
+              View publication
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M0 4h8M5 1l3 3-3 3" stroke="currentColor" stroke-width="1"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- PINPOINT Role -->
+        <div class="profile-section">
+          <div class="profile-section-label">Role in PINPOINT</div>
+          <div class="profile-bio-text">
+            <p>
+              As Principal Investigator, Timm Betz leads all aspects of the PINPOINT
+              project — from theoretical development and empirical design to team
+              coordination and dissemination. He is responsible for the overall
+              intellectual direction of the project and its engagement with the wider
+              scholarly community.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">Politics, Institutions, and Production Networks. ERC Starting Grant 101041658.</p>
+        <div class="footer-erc"><div class="footer-erc-dot"></div>European Research Council</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Team</div>
+        <ul class="footer-col-links">
+          <li><a href="profile-timm-betz.html"        class="footer-col-link">Timm Betz</a></li>
+          <li><a href="profile-soren-etzerodt.html"   class="footer-col-link">Sören Etzerodt</a></li>
+          <li><a href="profile-jonas-geus.html"       class="footer-col-link">Jonas Geus</a></li>
+          <li><a href="profile-paul-binder.html"      class="footer-col-link">Paul Binder</a></li>
+          <li><a href="profile-borna-ardehi.html"     class="footer-col-link">Borna Ardehi</a></li>
+          <li><a href="profile-monika-grzegorczyk.html" class="footer-col-link">Monika Grzegorczyk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-col-links">
+          <li><a href="https://cordis.europa.eu/project/id/101041658" target="_blank" class="footer-col-link">CORDIS</a></li>
+          <li><a href="contact.html" class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Posts — PINPOINT</title>
+  <meta name="description" content="All news, research updates, conference reports, and blog posts from the PINPOINT ERC project.">
+  <link rel="stylesheet" href="pinpoint.css">
+  <style>
+    /* ── LIBRARY-SPECIFIC STYLES ── */
+    .library-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: clamp(32px, 5vw, 56px);
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+      max-width: 380px;
+    }
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--paper);
+      padding: 10px 36px 10px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input::placeholder { color: var(--ink-light); }
+    .search-input:focus { border-color: var(--pin); }
+    .search-icon {
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-light);
+      pointer-events: none;
+    }
+    .search-clear {
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--ink-light);
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      display: none;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .search-clear:hover { color: var(--pin); }
+    .search-clear.visible { display: block; }
+    .search-clear.visible ~ .search-icon { display: none; }
+
+    /* Tags / filter bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: clamp(32px, 5vw, 48px);
+    }
+    .filter-btn {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--paper);
+      background: transparent;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-btn:hover { border-color: var(--ink-mid); color: var(--ink); }
+    .filter-btn.active {
+      background: var(--pin);
+      border-color: var(--pin);
+      color: #fff;
+    }
+
+    /* Results count */
+    .results-count {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--ink-light);
+      margin-bottom: 24px;
+    }
+    .results-count span { color: var(--ink); font-weight: 400; }
+
+    /* Post list */
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .post-row {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--off-white);
+      align-items: start;
+      transition: background 0.15s;
+    }
+    .post-row:first-child { border-top: 1px solid var(--off-white); }
+    .post-row:hover { background: var(--off-white); margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+    @media (max-width: 700px) {
+      .post-row { grid-template-columns: 1fr; gap: 12px; }
+      .post-row-thumb { display: none; }
+    }
+
+    .post-row-date {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+      padding-top: 3px;
+      white-space: nowrap;
+    }
+
+    .post-row-body {}
+    .post-row-tag {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pin);
+      margin-bottom: 6px;
+    }
+    .post-row-title {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .post-row:hover .post-row-title { color: var(--pin); }
+    .post-row-excerpt {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .post-row-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+    .post-row-author {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--ink-light);
+    }
+    .post-row-read {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--ink-light);
+    }
+    .post-row-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--ink-light);
+    }
+
+    .post-row-thumb {
+      width: 120px;
+      aspect-ratio: 4/3;
+      background: var(--off-white);
+      border: 1px solid var(--paper);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .post-row-thumb img { width:100%; height:100%; object-fit:cover; }
+
+    .post-row-arrow {
+      color: var(--ink-light);
+      font-size: 16px;
+      align-self: center;
+      transition: color 0.2s, transform 0.2s;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .post-row:hover .post-row-arrow { color: var(--pin); transform: translateX(4px); }
+
+    /* Featured / top post */
+    .post-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      padding: 0 0 clamp(32px, 5vw, 56px);
+      border-bottom: 1px solid var(--paper);
+      margin-bottom: clamp(32px, 5vw, 56px);
+    }
+    @media (max-width: 640px) {
+      .post-featured { grid-template-columns: 1fr; }
+    }
+    .post-featured-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--off-white);
+      border: 1px solid var(--paper);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .post-featured-image img { width:100%; height:100%; object-fit:cover; }
+    .post-featured-body { display: flex; flex-direction: column; justify-content: center; }
+    .post-featured-label {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pin);
+      margin-bottom: 12px;
+    }
+    .post-featured-title {
+      font-size: clamp(20px, 2.8vw, 30px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 14px;
+      transition: color 0.2s;
+    }
+    .post-featured:hover .post-featured-title { color: var(--pin); }
+    .post-featured-excerpt {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .post-featured-meta {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+      font-size: 10px; font-weight: 300; color: var(--ink-light);
+    }
+    .post-featured-cta {
+      margin-top: 20px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      border-bottom: 1px solid var(--paper);
+      padding-bottom: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .post-featured-cta:hover { color: var(--pin); border-color: var(--pin); }
+
+    /* No results */
+    .no-results {
+      text-align: center;
+      padding: 80px 0;
+      display: none;
+    }
+    .no-results.visible { display: block; }
+    .no-results-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+    .no-results-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-light);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">PINPOINT</span>
+      <span class="nav-logo-sub">ERC Research Project</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="research.html"   class="nav-link">Research</a></li>
+      <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="divider" style="margin-bottom: clamp(32px, 5vw, 64px);"></div>
+    <div class="page-header-inner">
+      <div>
+        <div class="page-header-label"><span class="label">From the project</span></div>
+        <h1 class="page-header-title">News &amp;<br><span style="color:var(--pin);">Posts</span></h1>
+      </div>
+      <p class="page-header-desc">
+        Research updates, working papers, conference dispatches, and reflections
+        from the PINPOINT team. Search by keyword or browse by category.
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+
+<!-- LIBRARY BODY -->
+<section class="section">
+  <div class="container">
+
+    <!-- Search + filter controls -->
+    <div class="library-controls fade-up">
+      <div class="search-wrap">
+        <input
+          type="text"
+          class="search-input"
+          id="post-search"
+          placeholder="Search posts…"
+          autocomplete="off"
+        >
+        <button class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1"/>
+          <line x1="10" y1="10" x2="13" y2="13" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Tag filter bar -->
+    <div class="filter-bar fade-up" style="transition-delay:0.05s;" id="filter-bar">
+      <button class="filter-btn active" data-tag="all">All</button>
+      <button class="filter-btn" data-tag="Research Update">Research Update</button>
+      <button class="filter-btn" data-tag="Working Paper">Working Paper</button>
+      <button class="filter-btn" data-tag="Conference">Conference</button>
+      <button class="filter-btn" data-tag="Data">Data</button>
+      <button class="filter-btn" data-tag="Event">Event</button>
+      <button class="filter-btn" data-tag="News">News</button>
+    </div>
+
+    <!-- Results count -->
+    <div class="results-count" id="results-count">
+      Showing <span id="visible-count">3</span> posts
+    </div>
+
+    <!-- ════ POST DATA ════════════════════════════
+         To add a new post:
+         1. Add a new <article class="post-item"> in the #post-list div below
+         2. Set data-tags to the category (must match a filter-btn data-tag)
+         3. Set data-title and data-text (used for keyword search)
+         4. Link href to the blog post file
+         ═══════════════════════════════════════ -->
+
+    <!-- Featured post -->
+    <a href="blog-template.html" id="featured-post" class="post-featured fade-up" style="text-decoration:none; transition-delay:0.08s;"
+       data-tags="Research Update" data-title="How Production Networks Shape Political Coalitions Over Trade Policy"
+       data-text="production networks coalitions trade policy working paper">
+      <div class="post-featured-image">
+        <svg width="80" height="60" viewBox="0 0 80 60" fill="none" opacity="0.25">
+          <circle cx="20" cy="30" r="5" fill="#C23B3B"/>
+          <circle cx="52" cy="14" r="3.5" fill="#888"/>
+          <circle cx="66" cy="42" r="3.5" fill="#888"/>
+          <circle cx="36" cy="50" r="3" fill="#888"/>
+          <circle cx="62" cy="22" r="2.5" fill="#888"/>
+          <line x1="20" y1="30" x2="52" y2="14" stroke="#C23B3B" stroke-width="1.2"/>
+          <line x1="20" y1="30" x2="66" y2="42" stroke="#C23B3B" stroke-width="1.2"/>
+          <line x1="20" y1="30" x2="36" y2="50" stroke="#C23B3B" stroke-width="1.2"/>
+          <line x1="52" y1="14" x2="62" y2="22" stroke="#bbb" stroke-width="0.8"/>
+          <line x1="66" y1="42" x2="36" y2="50" stroke="#bbb" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="post-featured-body">
+        <div class="post-featured-label">Research Update · Featured</div>
+        <div class="post-featured-title">
+          How Production Networks Shape Political Coalitions Over Trade Policy
+        </div>
+        <div class="post-featured-excerpt">
+          A new working paper from PINPOINT examines how the structure of
+          domestic production networks conditions the formation of political
+          coalitions in trade disputes. The findings challenge long-standing
+          assumptions about the fragmentation of trade politics.
+        </div>
+        <div class="post-featured-meta">
+          <span>Timm Betz</span>
+          <div class="post-row-dot"></div>
+          <span>January 2025</span>
+          <div class="post-row-dot"></div>
+          <span>8 min read</span>
+        </div>
+        <span class="post-featured-cta">
+          Read post
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M0 4h10M6 1l4 3-4 3" stroke="currentColor" stroke-width="1"/></svg>
+        </span>
+      </div>
+    </a>
+
+
+    <!-- Post list -->
+    <div class="post-list" id="post-list">
+
+      <a href="blog-template.html" class="post-row" style="text-decoration:none;"
+         data-tags="Conference"
+         data-title="APSA Annual Meeting — Presentation Recap"
+         data-text="APSA conference Philadelphia political science presentation panel">
+        <div class="post-row-date">Sept. 2024</div>
+        <div class="post-row-body">
+          <div class="post-row-tag">Conference</div>
+          <div class="post-row-title">APSA Annual Meeting — Presentation Recap</div>
+          <div class="post-row-excerpt">
+            PINPOINT team members presented new theoretical and empirical findings
+            on firm-level political behaviour at the American Political Science
+            Association Annual Meeting in Philadelphia.
+          </div>
+          <div class="post-row-meta">
+            <span class="post-row-author">Sören Etzerodt</span>
+            <div class="post-row-dot"></div>
+            <span class="post-row-read">4 min read</span>
+          </div>
+        </div>
+        <div class="post-row-thumb">
+          <svg width="40" height="32" viewBox="0 0 40 32" fill="none" opacity="0.25">
+            <circle cx="10" cy="16" r="3" fill="#888"/>
+            <circle cx="26" cy="8"  r="2.5" fill="#888"/>
+            <circle cx="34" cy="22" r="2.5" fill="#888"/>
+            <line x1="10" y1="16" x2="26" y2="8"  stroke="#bbb" stroke-width="0.8"/>
+            <line x1="10" y1="16" x2="34" y2="22" stroke="#bbb" stroke-width="0.8"/>
+            <line x1="26" y1="8"  x2="34" y2="22" stroke="#bbb" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="post-row-arrow">→</div>
+      </a>
+
+      <a href="blog-template.html" class="post-row" style="text-decoration:none;"
+         data-tags="Data"
+         data-title="New Dataset on Firm-Level Production Ties Released"
+         data-text="dataset firm production ties input output cross-country supply chain data empirical">
+        <div class="post-row-date">June 2024</div>
+        <div class="post-row-body">
+          <div class="post-row-tag">Data</div>
+          <div class="post-row-title">New Dataset on Firm-Level Production Ties Released</div>
+          <div class="post-row-excerpt">
+            The PINPOINT team has compiled an original cross-country dataset linking
+            firm-level trade data to domestic input–output relationships, enabling new
+            empirical tests of the production-network theory.
+          </div>
+          <div class="post-row-meta">
+            <span class="post-row-author">Jonas Geus, Borna Ardehi</span>
+            <div class="post-row-dot"></div>
+            <span class="post-row-read">5 min read</span>
+          </div>
+        </div>
+        <div class="post-row-thumb">
+          <svg width="40" height="32" viewBox="0 0 40 32" fill="none" opacity="0.25">
+            <circle cx="20" cy="6"  r="3" fill="#C23B3B"/>
+            <circle cx="8"  cy="24" r="2.5" fill="#888"/>
+            <circle cx="32" cy="24" r="2.5" fill="#888"/>
+            <line x1="20" y1="6" x2="8"  y2="24" stroke="#C23B3B" stroke-width="0.9"/>
+            <line x1="20" y1="6" x2="32" y2="24" stroke="#C23B3B" stroke-width="0.9"/>
+            <line x1="8"  y1="24" x2="32" y2="24" stroke="#bbb" stroke-width="0.7"/>
+          </svg>
+        </div>
+        <div class="post-row-arrow">→</div>
+      </a>
+
+      <!-- Add more posts here following the same pattern -->
+      <!-- Example placeholder:
+      <a href="your-post-file.html" class="post-item post-row" style="text-decoration:none;"
+         data-tags="Working Paper"
+         data-title="Your Post Title"
+         data-text="keywords for search">
+        ...
+      </a>
+      -->
+
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results" id="no-results">
+      <div class="no-results-icon">◎</div>
+      <div class="no-results-text">No posts match your search.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">PINPOINT</div>
+        <p class="footer-brand-desc">Politics, Institutions, and Production Networks. ERC Starting Grant 101041658.</p>
+        <div class="footer-erc"><div class="footer-erc-dot"></div>European Research Council</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-col-links">
+          <li><a href="index.html"     class="footer-col-link">Home</a></li>
+          <li><a href="about.html"     class="footer-col-link">About</a></li>
+          <li><a href="research.html"  class="footer-col-link">Research</a></li>
+          <li><a href="portraits.html" class="footer-col-link">Portraits</a></li>
+          <li><a href="contact.html"   class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Posts</div>
+        <ul class="footer-col-links">
+          <li><a href="news.html" class="footer-col-link">All Posts</a></li>
+          <li><a href="news.html" class="footer-col-link">Research Updates</a></li>
+          <li><a href="news.html" class="footer-col-link">Working Papers</a></li>
+          <li><a href="news.html" class="footer-col-link">Conference</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-col-links">
+          <li><a href="https://cordis.europa.eu/project/id/101041658" target="_blank" class="footer-col-link">CORDIS</a></li>
+          <li><a href="contact.html" class="footer-col-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 PINPOINT Project · Ludwig-Maximilians-Universität München</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Imprint</a>
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="pinpoint.js"></script>
+<script>
+(function () {
+  const searchInput  = document.getElementById('post-search');
+  const searchClear  = document.getElementById('search-clear');
+  const filterBtns   = document.querySelectorAll('.filter-btn');
+  const postList     = document.getElementById('post-list');
+  const featured     = document.getElementById('featured-post');
+  const noResults    = document.getElementById('no-results');
+  const visibleCount = document.getElementById('visible-count');
+
+  // All posts: featured + list rows
+  const allPosts = [featured, ...postList.querySelectorAll('.post-row')];
+  let activeTag  = 'all';
+  let searchTerm = '';
+
+  function normalize(str) {
+    return str.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  }
+
+  function applyFilters() {
+    let count = 0;
+
+    allPosts.forEach(post => {
+      const tags   = (post.dataset.tags  || '').toLowerCase();
+      const title  = normalize(post.dataset.title  || '');
+      const text   = normalize(post.dataset.text   || '');
+      const search = normalize(searchTerm);
+
+      const tagMatch  = activeTag === 'all' || tags.includes(activeTag.toLowerCase());
+      const textMatch = !search || title.includes(search) || text.includes(search);
+
+      const visible = tagMatch && textMatch;
+      post.style.display = visible ? '' : 'none';
+      if (visible) count++;
+    });
+
+    visibleCount.textContent = count;
+    noResults.classList.toggle('visible', count === 0);
+  }
+
+  // Tag filter
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = btn.dataset.tag;
+      applyFilters();
+    });
+  });
+
+  // Search
+  searchInput.addEventListener('input', () => {
+    searchTerm = searchInput.value;
+    searchClear.classList.toggle('visible', searchTerm.length > 0);
+    applyFilters();
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchTerm = '';
+    searchClear.classList.remove('visible');
+    applyFilters();
+    searchInput.focus();
+  });
+
+})();
+</script>
+</body>
+</html>
