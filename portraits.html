@@ -66,6 +66,7 @@
       <li><a href="about.html"      class="nav-link">About</a></li>
       <li><a href="research.html"   class="nav-link">Research</a></li>
       <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="news.html"       class="nav-link">News</a></li>
       <li><a href="contact.html"    class="nav-link">Contact</a></li>
     </ul>
   </div>
@@ -107,7 +108,7 @@
 
       <!-- ROW 1: PI -->
       <div class="portraits-pi">
-        <div class="portrait-card pi-card" id="card-timm">
+        <div class="portrait-card pi-card" id="card-timm" data-profile="profile-timm-betz.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -118,7 +119,7 @@
                 <div class="card-role" style="margin-bottom:6px;">Principal Investigator</div>
                 <div class="card-name">Prof. Dr.<br>Timm Betz</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -143,7 +144,7 @@
       <!-- ROW 2: Three members -->
       <div class="portraits-row">
 
-        <div class="portrait-card member-card" id="card-soren">
+        <div class="portrait-card member-card" id="card-soren" data-profile="profile-soren-etzerodt.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -154,7 +155,7 @@
                 <div class="card-role">Postdoctoral Researcher</div>
                 <div class="card-name">Sören<br>Etzerodt</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -175,7 +176,7 @@
           </div>
         </div>
 
-        <div class="portrait-card member-card" id="card-jonas">
+        <div class="portrait-card member-card" id="card-jonas" data-profile="profile-jonas-geus.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -186,7 +187,7 @@
                 <div class="card-role">Doctoral Researcher</div>
                 <div class="card-name">Jonas<br>Geus</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -207,7 +208,7 @@
           </div>
         </div>
 
-        <div class="portrait-card member-card" id="card-paul">
+        <div class="portrait-card member-card" id="card-paul" data-profile="profile-paul-binder.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -218,7 +219,7 @@
                 <div class="card-role">Doctoral Researcher</div>
                 <div class="card-name">Paul<br>Binder</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -241,10 +242,10 @@
 
       </div>
 
-      <!-- ROW 3: Two members -->
+      <!-- ROW 3: Borna, Monika + 3 placeholders -->
       <div class="portraits-row">
 
-        <div class="portrait-card member-card" id="card-borna">
+        <div class="portrait-card member-card" id="card-borna" data-profile="profile-borna-ardehi.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -255,7 +256,7 @@
                 <div class="card-role">Doctoral Researcher</div>
                 <div class="card-name">Borna<br>Ardehi</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -276,7 +277,7 @@
           </div>
         </div>
 
-        <div class="portrait-card member-card" id="card-monika">
+        <div class="portrait-card member-card" id="card-monika" data-profile="profile-monika-grzegorczyk.html">
           <div class="pin-top"></div>
           <div class="card-inner">
             <div class="card-front">
@@ -287,7 +288,7 @@
                 <div class="card-role">Doctoral Researcher</div>
                 <div class="card-name">Monika<br>Grzegorczyk</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
@@ -308,11 +309,6 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- ROW 4: Two more members -->
-      <div class="portraits-row">
-
         <div class="portrait-card member-card" id="card-member5">
           <div class="pin-top"></div>
           <div class="card-inner">
@@ -324,15 +320,14 @@
                 <div class="card-role">Researcher</div>
                 <div class="card-name">First<br>Last Name</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
                 <div class="card-back-name">First Last Name</div>
                 <div class="card-back-role">Researcher</div>
                 <p class="card-bio">
-                  Short bio text for this team member. Describe their research
-                  interests, background, and role within the PINPOINT project.
+                  Short bio text. Describe research interests and role within PINPOINT.
                 </p>
               </div>
               <div class="card-links">
@@ -355,15 +350,44 @@
                 <div class="card-role">Researcher</div>
                 <div class="card-name">First<br>Last Name</div>
               </div>
-              <div class="flip-hint">hover to reveal →</div>
+              <div class="flip-hint">hover to flip · click profile →</div>
             </div>
             <div class="card-back">
               <div>
                 <div class="card-back-name">First Last Name</div>
                 <div class="card-back-role">Researcher</div>
                 <p class="card-bio">
-                  Short bio text for this team member. Describe their research
-                  interests, background, and role within the PINPOINT project.
+                  Short bio text. Describe research interests and role within PINPOINT.
+                </p>
+              </div>
+              <div class="card-links">
+                <a href="#" class="card-link">Research Profile <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">Personal Website <span class="card-link-arrow">→</span></a>
+                <a href="#" class="card-link">LinkedIn <span class="card-link-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait-card member-card" id="card-member7">
+          <div class="pin-top"></div>
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="portrait-photo">
+                <div class="portrait-initials">XX</div>
+              </div>
+              <div class="card-info">
+                <div class="card-role">Researcher</div>
+                <div class="card-name">First<br>Last Name</div>
+              </div>
+              <div class="flip-hint">hover to flip · click profile →</div>
+            </div>
+            <div class="card-back">
+              <div>
+                <div class="card-back-name">First Last Name</div>
+                <div class="card-back-role">Researcher</div>
+                <p class="card-bio">
+                  Short bio text. Describe research interests and role within PINPOINT.
                 </p>
               </div>
               <div class="card-links">
@@ -432,5 +456,31 @@
 </footer>
 
 <script src="pinpoint.js"></script>
+
+<script>
+// ── CARD CLICK → NAVIGATE TO PROFILE ─────────────────
+(function () {
+  document.querySelectorAll('.portrait-card[data-profile]').forEach(card => {
+    const url = card.dataset.profile;
+    // Update flip hint text
+    const hint = card.querySelector('.flip-hint');
+    if (hint) hint.textContent = 'hover to flip · click to visit →';
+
+    card.addEventListener('click', function (e) {
+      // Don't navigate if user clicked a link inside the card-back
+      if (e.target.closest('a')) return;
+      window.location.href = url;
+    });
+    card.style.cursor = 'pointer';
+  });
+
+  // Placeholder cards without data-profile
+  document.querySelectorAll('.portrait-card:not([data-profile])').forEach(card => {
+    const hint = card.querySelector('.flip-hint');
+    if (hint) hint.textContent = 'hover to reveal →';
+  });
+})();
+</script>
+
 </body>
 </html>

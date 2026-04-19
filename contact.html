@@ -24,6 +24,7 @@
       <li><a href="about.html"      class="nav-link">About</a></li>
       <li><a href="research.html"   class="nav-link">Research</a></li>
       <li><a href="portraits.html"  class="nav-link">Portraits</a></li>
+      <li><a href="news.html"       class="nav-link">News</a></li>
       <li><a href="contact.html"    class="nav-link">Contact</a></li>
     </ul>
   </div>
@@ -62,7 +63,32 @@
           <span class="label">Send a message</span>
         </div>
 
-        <form id="contact-form" novalidate>
+        <!--
+        ═══════════════════════════════════════════
+        CONTACT FORM — powered by Web3Forms (free)
+        ═══════════════════════════════════════════
+        SETUP (one-time, takes 30 seconds):
+        1. Go to https://web3forms.com
+        2. Enter your email address → click "Create Access Key"
+        3. Copy the access key you receive
+        4. Replace YOUR_ACCESS_KEY_HERE below with it
+        5. That's it — submissions arrive in your inbox
+           AND optionally in a Google Sheet (see web3forms.com/integrations)
+
+        No server, no database, no cost. Free tier = unlimited submissions.
+        ═══════════════════════════════════════════
+        -->
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+
+          <!-- Web3Forms hidden config -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New message from PINPOINT website">
+          <input type="hidden" name="from_name" value="PINPOINT Contact Form">
+          <!-- Redirect after successful submission (optional — set to a thank-you page or leave as is) -->
+          <input type="hidden" name="redirect" value="">
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" style="display:none;">
+
           <div class="form-group">
             <label class="form-label" for="name">Name</label>
             <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required>
@@ -76,8 +102,8 @@
             <input type="text" id="affiliation" name="affiliation" class="form-input" placeholder="University / institution (optional)">
           </div>
           <div class="form-group">
-            <label class="form-label" for="subject">Subject</label>
-            <select id="subject" name="subject" class="form-select form-input">
+            <label class="form-label" for="topic">Subject</label>
+            <select id="topic" name="topic" class="form-select form-input">
               <option value="" disabled selected>Select a topic</option>
               <option>Research inquiry</option>
               <option>Collaboration proposal</option>
@@ -90,13 +116,71 @@
             <label class="form-label" for="message">Message</label>
             <textarea id="message" name="message" class="form-textarea" placeholder="Your message…" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn-submit">
+
+          <!-- Status messages -->
+          <div id="form-success" style="display:none; padding:14px 0; font-size:12px; font-weight:400; color:#4A7A5A; letter-spacing:0.06em;">
+            ✓ Message sent — we'll be in touch soon.
+          </div>
+          <div id="form-error" style="display:none; padding:14px 0; font-size:12px; font-weight:400; color:var(--pin); letter-spacing:0.06em;">
+            Something went wrong. Please try again or email us directly.
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
             Send message
             <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
               <path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
             </svg>
           </button>
         </form>
+
+        <script>
+        (function () {
+          const form    = document.getElementById('contact-form');
+          const btn     = document.getElementById('submit-btn');
+          const success = document.getElementById('form-success');
+          const error   = document.getElementById('form-error');
+          if (!form) return;
+
+          form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Basic validation
+            const key = form.querySelector('[name="access_key"]').value;
+            if (key === 'YOUR_ACCESS_KEY_HERE') {
+              error.textContent = 'Please add your Web3Forms access key first (see comment in HTML).';
+              error.style.display = 'block';
+              return;
+            }
+
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
+            success.style.display = 'none';
+            error.style.display   = 'none';
+
+            try {
+              const data = new FormData(form);
+              const res  = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: data
+              });
+              const json = await res.json();
+
+              if (json.success) {
+                success.style.display = 'block';
+                form.reset();
+                btn.textContent = 'Send message';
+                btn.disabled = false;
+              } else {
+                throw new Error(json.message);
+              }
+            } catch (err) {
+              error.style.display = 'block';
+              btn.textContent = 'Send message';
+              btn.disabled = false;
+            }
+          });
+        })();
+        </script>
       </div>
 
       <!-- Info -->
