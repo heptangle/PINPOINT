@@ -42,7 +42,7 @@
       </div>
       <p class="page-header-desc">
         For research inquiries, collaboration proposals, or media requests,
-        please use the form below or reach us directly in Munich.
+        reach out directly to the Principal Investigator.
       </p>
     </div>
   </div>
@@ -54,192 +54,76 @@
 <!-- CONTACT BODY -->
 <section class="section">
   <div class="container">
-    <div class="contact-grid">
+    <div style="max-width: 640px;">
 
-      <!-- Form -->
-      <div class="contact-form fade-up">
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:36px;">
+      <!-- PI Contact -->
+      <div class="fade-up" style="margin-bottom: clamp(48px, 7vw, 80px);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px;">
           <span class="deco-pin" data-size="13"></span>
-          <span class="label">Send a message</span>
+          <span class="label">Principal Investigator</span>
         </div>
 
-        <!--
-        ═══════════════════════════════════════════
-        CONTACT FORM — powered by Web3Forms (free)
-        ═══════════════════════════════════════════
-        SETUP (one-time, takes 30 seconds):
-        1. Go to https://web3forms.com
-        2. Enter your email address → click "Create Access Key"
-        3. Copy the access key you receive
-        4. Replace YOUR_ACCESS_KEY_HERE below with it
-        5. That's it — submissions arrive in your inbox
-           AND optionally in a Google Sheet (see web3forms.com/integrations)
-
-        No server, no database, no cost. Free tier = unlimited submissions.
-        ═══════════════════════════════════════════
-        -->
-        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-
-          <!-- Web3Forms hidden config -->
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-          <input type="hidden" name="subject" value="New message from PINPOINT website">
-          <input type="hidden" name="from_name" value="PINPOINT Contact Form">
-          <!-- Redirect after successful submission (optional — set to a thank-you page or leave as is) -->
-          <input type="hidden" name="redirect" value="">
-          <!-- Honeypot spam protection -->
-          <input type="checkbox" name="botcheck" style="display:none;">
-
-          <div class="form-group">
-            <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required>
+        <div style="display:flex; align-items:center; gap:20px; margin-bottom:28px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--off-white);border:1px solid var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:16px;font-weight:300;color:var(--ink-light);">TB</span>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+          <div>
+            <div style="font-size:17px;font-weight:400;color:var(--ink);margin-bottom:3px;">Prof. Dr. Timm Betz</div>
+            <div style="font-size:9px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--pin);">Principal Investigator</div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="affiliation">Affiliation</label>
-            <input type="text" id="affiliation" name="affiliation" class="form-input" placeholder="University / institution (optional)">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="topic">Subject</label>
-            <select id="topic" name="topic" class="form-select form-input">
-              <option value="" disabled selected>Select a topic</option>
-              <option>Research inquiry</option>
-              <option>Collaboration proposal</option>
-              <option>Data request</option>
-              <option>Media / press</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea id="message" name="message" class="form-textarea" placeholder="Your message…" rows="5" required></textarea>
-          </div>
+        </div>
 
-          <!-- Status messages -->
-          <div id="form-success" style="display:none; padding:14px 0; font-size:12px; font-weight:400; color:#4A7A5A; letter-spacing:0.06em;">
-            ✓ Message sent — we'll be in touch soon.
-          </div>
-          <div id="form-error" style="display:none; padding:14px 0; font-size:12px; font-weight:400; color:var(--pin); letter-spacing:0.06em;">
-            Something went wrong. Please try again or email us directly.
-          </div>
-
-          <button type="submit" class="btn-submit" id="submit-btn">
-            Send message
-            <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-              <path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
-            </svg>
-          </button>
-        </form>
-
-        <script>
-        (function () {
-          const form    = document.getElementById('contact-form');
-          const btn     = document.getElementById('submit-btn');
-          const success = document.getElementById('form-success');
-          const error   = document.getElementById('form-error');
-          if (!form) return;
-
-          form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            // Basic validation
-            const key = form.querySelector('[name="access_key"]').value;
-            if (key === 'YOUR_ACCESS_KEY_HERE') {
-              error.textContent = 'Please add your Web3Forms access key first (see comment in HTML).';
-              error.style.display = 'block';
-              return;
-            }
-
-            btn.textContent = 'Sending…';
-            btn.disabled = true;
-            success.style.display = 'none';
-            error.style.display   = 'none';
-
-            try {
-              const data = new FormData(form);
-              const res  = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: data
-              });
-              const json = await res.json();
-
-              if (json.success) {
-                success.style.display = 'block';
-                form.reset();
-                btn.textContent = 'Send message';
-                btn.disabled = false;
-              } else {
-                throw new Error(json.message);
-              }
-            } catch (err) {
-              error.style.display = 'block';
-              btn.textContent = 'Send message';
-              btn.disabled = false;
-            }
-          });
-        })();
-        </script>
+        <a href="mailto:betzt@wustl.edu"
+           style="display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:300;color:var(--ink);border-bottom:1px solid var(--paper);padding-bottom:6px;transition:color .2s,border-color .2s;"
+           onmouseover="this.style.color='var(--pin)';this.style.borderColor='var(--pin)'"
+           onmouseout="this.style.color='';this.style.borderColor=''">
+          <svg width="14" height="10" viewBox="0 0 16 12" fill="none">
+            <rect x="0.5" y="0.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1"/>
+            <path d="M1 1l7 6 7-6" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          betzt@wustl.edu
+        </a>
       </div>
 
-      <!-- Info -->
-      <div class="contact-info fade-up" style="transition-delay:0.15s;">
+      <!-- Address -->
+      <div class="fade-up" style="margin-bottom: clamp(40px, 6vw, 64px); transition-delay:0.08s;">
+        <div class="sidebar-title" style="margin-bottom:16px;">Postal Address</div>
+        <div class="address-block">
+          <strong>PINPOINT Research Project</strong><br>
+          Prof. Dr. Timm Betz<br>
+          Ludwig-Maximilians-Universität München<br>
+          Maria-Theresia-Straße 21<br>
+          81675 Munich<br>
+          Germany
+        </div>
+      </div>
 
-        <!-- Map placeholder -->
-        <div class="contact-map-placeholder">
+      <!-- Map -->
+      <div class="fade-up" style="margin-bottom: clamp(40px, 6vw, 64px); transition-delay:0.12s;">
+        <div class="contact-map-placeholder" style="max-width:480px;">
           <div class="map-grid"></div>
           <div class="map-pin-center">
             <span class="deco-pin" data-size="28"></span>
-            <div class="map-address-text">
-              Maria-Theresia-Str. 21<br>
-              Munich, Germany
-            </div>
+            <div class="map-address-text">Maria-Theresia-Str. 21<br>Munich, Germany</div>
           </div>
         </div>
+      </div>
 
-        <div style="margin-bottom: 36px;">
-          <div class="sidebar-title" style="margin-bottom:12px;">Postal Address</div>
-          <div class="address-block">
-            <strong>PINPOINT Research Project</strong><br>
-            Prof. Dr. Timm Betz<br>
-            Ludwig-Maximilians-Universität München<br>
-            Maria-Theresia-Straße 21<br>
-            81675 Munich<br>
-            Germany
-          </div>
+      <!-- External links -->
+      <div class="fade-up" style="transition-delay:0.16s;">
+        <div class="sidebar-title" style="margin-bottom:16px;">External Links</div>
+        <div style="display:flex; flex-direction:column; gap:0;">
+          <a href="https://cordis.europa.eu/project/id/101041658" target="_blank"
+             style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding:12px 0;display:flex;justify-content:space-between;align-items:center;transition:color .2s;"
+             onmouseover="this.style.color='var(--pin)'" onmouseout="this.style.color=''">
+            CORDIS Project Record <span>→</span>
+          </a>
+          <a href="https://doi.org/10.3030/101041658" target="_blank"
+             style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding:12px 0;display:flex;justify-content:space-between;align-items:center;transition:color .2s;"
+             onmouseover="this.style.color='var(--pin)'" onmouseout="this.style.color=''">
+            DOI 10.3030/101041658 <span>→</span>
+          </a>
         </div>
-
-        <div style="margin-bottom: 36px;">
-          <div class="sidebar-title" style="margin-bottom:12px;">External Links</div>
-          <div style="display:flex; flex-direction:column; gap: 8px;">
-            <a href="https://cordis.europa.eu/project/id/101041658" target="_blank"
-               style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:color .2s,border-color .2s;"
-               onmouseover="this.style.color='var(--pin)';this.style.borderColor='var(--pin)'"
-               onmouseout="this.style.color='';this.style.borderColor=''">
-              CORDIS Project Record <span>→</span>
-            </a>
-            <a href="https://doi.org/10.3030/101041658" target="_blank"
-               style="font-size:12px;font-weight:300;color:var(--ink-mid);border-bottom:1px solid var(--paper);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:color .2s,border-color .2s;"
-               onmouseover="this.style.color='var(--pin)';this.style.borderColor='var(--pin)'"
-               onmouseout="this.style.color='';this.style.borderColor=''">
-              DOI 10.3030/101041658 <span>→</span>
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <div class="sidebar-title" style="margin-bottom:12px;">Funded by</div>
-          <div class="erc-badge">
-            <div class="erc-badge-dot"><span>ERC</span></div>
-            <div class="erc-badge-text">
-              <strong>European Research Council</strong>
-              Starting Grant · Horizon Europe<br>
-              Grant Agreement 101041658
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>

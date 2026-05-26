@@ -15,12 +15,6 @@
     }
     @media (max-width: 860px) {
       .profile-layout { grid-template-columns: 1fr; }
-      .profile-photo-wrap { position: static; }
-      .profile-photo {
-        aspect-ratio: 1/1;
-        max-width: 180px;
-        margin: 0 auto 24px;
-      }
     }
 
     /* ── Left column ── */
@@ -187,6 +181,18 @@
     .back-link:hover { color: var(--pin); }
     .back-link svg { transition: transform 0.2s; }
     .back-link:hover svg { transform: translateX(-3px); }
+
+    /* ── Mobile: unpin photo, stack layout ── */
+    @media (max-width: 860px) {
+      .profile-photo-wrap {
+        position: static !important;
+      }
+      .profile-photo {
+        aspect-ratio: 1/1;
+        max-width: 180px;
+        margin: 0 auto 24px;
+      }
+    }
   </style>
 </head>
 <body>
